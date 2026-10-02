@@ -14,7 +14,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M6 30V14a10 10 0 0 1 20 0v16Z' fill='%231E3A36'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@200;300;500;700&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@200;300;500;700&family=Almarai:wght@300;400;700&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
 
 <script>
 /* ═══════════════════════════════════════════════════════════════
@@ -34,14 +34,27 @@ const SITE = {
   instagram: "",                        // اختياري — بدون @
   hours: "الأحد – الخميس، ٩ص – ٦م",
   cr: "",                               // اختياري — السجل التجاري
+  freelance: "FL-000000000",            // ⚠️ رقم وثيقة العمل الحر — اكتب الرقم الحقيقي
 
   heroLine: "تصميم داخلي من المدينة المنورة",
 
   about: {
     statement: "نؤمن أن المساحة الجميلة تبدأ من فهم من يعيش فيها. نصغي أولاً، ثم نترجم طريقة يومك إلى ضوء وخامة ولون، حتى يصبح المكان امتداداً لك.",
     photo: "images/about/renad.jpg",
-    text: "مصممة داخلية من المدينة المنورة، بخبرة تمتد لأكثر من أربع سنوات في المساحات السكنية والتجارية والمكتبية. أرافق العميل من أول زيارة حتى تسليم المفتاح.",
-    facts: [["الخبرة","+٤ سنوات"],["التخصص","سكني، تجاري، مكتبي"],["اللغات","العربية والإنجليزية"]]
+    eyebrow: "عن ريناد",
+    title: "أصمّم بيوتاً تشبه أصحابها",
+    paragraphs: [
+      "أنا ريناد دويدي، مصممة داخلية من المدينة المنورة. على مدى أكثر من أربع سنوات صمّمت ونفّذت مساحات سكنية وتجارية ومكتبية، وفي كل مشروع كان سؤالي الأول واحداً: كيف تعيش هنا؟",
+      "من هذا السؤال يبدأ كل شيء: توزيع يريح الحركة، وخامات تعيش طويلاً، وإضاءة تغيّر إحساس المكان بين النهار والليل. وأبقى معك من أول مخطط حتى آخر قطعة في مكانها."
+    ],
+    signature: "ريناد دويدي",          // يظهر بخط يدوي — اتركه "" لإخفائه
+    badge: ["+٤", "سنوات من التصميم والتنفيذ"],
+    facts: [["التخصص","سكني · تجاري · مكتبي"],["اللغات","العربية والإنجليزية"],["المقر","المدينة المنورة"]],
+    principles: [
+      ["الإصغاء أولاً", "التصميم الجيد يبدأ من فهم يومك وعاداتك قبل اختيار أي لون."],
+      ["الضوء قبل اللون", "الإضاءة المدروسة تصنع نصف جمال المساحة وإحساسها."],
+      ["تفاصيل تُنفَّذ كما رُسمت", "أتابع التنفيذ بنفسي حتى يطابق الواقع التصميم."]
+    ]
   },
 
   services: [
@@ -273,14 +286,31 @@ section{padding:clamp(80px,11vw,150px) 0}
 .stmt{font:300 clamp(1.7rem,3.8vw,3.3rem)/1.6 var(--display);margin:0 0 clamp(64px,9vw,120px);max-width:22em}
 .stmt span{opacity:.14;transition:opacity .35s}
 .stmt span.lit{opacity:1}
-.about{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(32px,6vw,100px);align-items:end}
-.about .photo{aspect-ratio:4/5;border-radius:50vw 50vw 0 0;overflow:hidden}
-.about .photo img{width:100%;height:100%;object-fit:cover}
-.about dl{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:40px 0 0}
-.about dl div{border-top:1px solid var(--ink);padding-top:14px}
-.about dt{font-size:.85rem;color:var(--soft)}
-.about dd{margin:4px 0 0;font:500 1.1rem var(--display)}
-@media (max-width:860px){.about{grid-template-columns:1fr}.about .photo{max-width:360px}.about dl{grid-template-columns:1fr}}
+.eyebrow{display:inline-block;color:var(--gold);font-size:.92rem;font-weight:700;margin-bottom:10px}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.btn.ghost:hover{background:var(--ink);color:var(--white)}
+.ab{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,7vw,120px);align-items:center}
+.ab-photo{position:relative;max-width:470px;width:100%;justify-self:center;padding:22px 0 0 22px}
+.ab-line{position:absolute;top:0;left:0;right:22px;bottom:22px;border:1px solid var(--gold);border-radius:50vw 50vw 6px 6px;opacity:.6}
+.ab-frame{position:relative;aspect-ratio:2/3;border-radius:50vw 50vw 6px 6px;overflow:hidden;background:var(--surface)}
+.ab-frame img,.ab-frame .ph{width:100%;height:100%;object-fit:cover;transform:translate3d(0,var(--py,0px),0) scale(1.1);will-change:transform}
+.ab-badge{position:absolute;bottom:56px;left:-6px;background:var(--white);padding:18px 24px;border-radius:4px;box-shadow:0 24px 50px -20px rgba(30,58,54,.35);max-width:200px}
+.ab-badge b{display:block;font:200 2.8rem/1 var(--display);color:var(--ink)}
+.ab-badge span{display:block;font-size:.88rem;color:var(--soft);margin-top:8px;line-height:1.6}
+.ab-text h2{font-size:clamp(2rem,4vw,3.3rem);margin-bottom:24px}
+.ab-paras p{color:var(--soft);margin:0 0 16px;max-width:34em;font-size:1.08rem}
+.sig{font:400 clamp(2rem,3.4vw,2.8rem)/1.2 "Aref Ruqaa",serif;color:var(--ink);margin:10px 0 0;opacity:.9}
+.ab-facts{display:flex;flex-wrap:wrap;gap:14px 34px;margin:28px 0 32px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ab-facts dt{font-size:.8rem;color:var(--soft)}
+.ab-facts dd{margin:2px 0 0;font:500 1rem var(--display)}
+.ab-cta{display:flex;flex-wrap:wrap;gap:10px}
+.ab-prin{list-style:none;margin:clamp(64px,8vw,110px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,48px)}
+.ab-prin li{border-top:1px solid var(--ink);padding-top:22px;position:relative}
+.ab-prin li::before{content:"";position:absolute;top:-1px;right:0;width:46px;height:2px;background:var(--gold)}
+.ab-prin svg{width:26px;height:30px;color:var(--gold);margin-bottom:14px}
+.ab-prin h3{font:500 1.3rem var(--display);margin:0 0 8px}
+.ab-prin p{margin:0;color:var(--soft);font-size:.97rem}
+@media (max-width:860px){.ab{grid-template-columns:1fr}.ab-photo{max-width:340px}.ab-prin{grid-template-columns:1fr}.ab-badge{left:0;bottom:30px;padding:12px 16px;max-width:150px}.ab-badge b{font-size:2rem}.ab-badge span{font-size:.78rem;margin-top:4px}}
 
 /* services */
 .services{background:var(--surface)}
@@ -411,8 +441,18 @@ textarea{min-height:96px;resize:vertical}
 @media (max-width:860px){.cgrid{grid-template-columns:1fr}form{grid-template-columns:1fr}}
 
 footer{padding:clamp(56px,8vw,96px) 0 32px;overflow:hidden}
-.bigname{font:200 clamp(3.4rem,13vw,12rem)/1 var(--display);margin:0 0 36px;white-space:nowrap;color:var(--ink)}
-.fbar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:var(--soft);font-size:.88rem;border-top:1px solid var(--line);padding-top:22px}
+.bigname{font:200 clamp(3.4rem,13vw,12rem)/1 var(--display);margin:0 0 48px;white-space:nowrap;color:var(--ink)}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;border-top:1px solid var(--line);padding:40px 0}
+.ftag{font:300 1.35rem/1.6 var(--display);margin:0 0 22px;max-width:18em}
+footer h4{font-size:.85rem;color:var(--gold);margin:0 0 14px;font-weight:700}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer ul a{text-decoration:none;color:var(--ink)}
+footer ul a:hover{color:var(--gold)}
+footer ul a[dir=ltr]{display:inline-block}
+.fbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;color:var(--soft);font-size:.86rem;border-top:1px solid var(--line);padding-top:22px}
+.lic{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:100px;padding:6px 14px;background:var(--white)}
+.lic b{color:var(--ink);font-weight:700;direction:ltr;unicode-bidi:isolate}
+@media (max-width:760px){.fgrid{grid-template-columns:1fr}}
 
 /* project view */
 .pv{position:fixed;inset:0;z-index:60;background:var(--bg);overflow:auto;overscroll-behavior:contain;clip-path:var(--full)}
@@ -577,14 +617,22 @@ footer{padding:clamp(56px,8vw,96px) 0 32px;overflow:hidden}
   <section id="about">
     <div class="wrap">
       <p class="stmt" id="stmt"></p>
-      <div class="about">
-        <div class="photo" id="aboutPhoto"></div>
-        <div>
-          <h2 id="aboutTitle" style="font-size:clamp(1.8rem,3.4vw,2.8rem)"></h2>
-          <p class="lede" id="aboutText"></p>
-          <dl id="aboutFacts"></dl>
+      <div class="ab">
+        <div class="ab-photo">
+          <span class="ab-line" aria-hidden="true"></span>
+          <div class="ab-frame" id="aboutPhoto"></div>
+          <div class="ab-badge" id="aboutBadge"></div>
+        </div>
+        <div class="ab-text">
+          <span class="eyebrow" id="aboutEyebrow"></span>
+          <h2 id="aboutTitle"></h2>
+          <div class="ab-paras" id="aboutParas"></div>
+          <p class="sig" id="aboutSig" aria-hidden="true"></p>
+          <dl class="ab-facts" id="aboutFacts"></dl>
+          <div class="ab-cta"><a class="btn" href="#contact">احجز جلسة مع ريناد</a><a class="btn ghost" href="#work">شاهد أعمالي</a></div>
         </div>
       </div>
+      <ul class="ab-prin" id="aboutPrin"></ul>
     </div>
   </section>
 
@@ -683,7 +731,17 @@ footer{padding:clamp(56px,8vw,96px) 0 32px;overflow:hidden}
   </section>
 </main>
 
-<footer><div class="wrap"><p class="bigname" id="bigname" aria-hidden="true"></p><div class="fbar"><span id="copy"></span><span id="fcity"></span></div></div></footer>
+<footer>
+  <div class="wrap">
+    <p class="bigname" id="bigname" aria-hidden="true"></p>
+    <div class="fgrid">
+      <div><p class="ftag" id="ftag"></p><a class="btn" href="#contact">احجز استشارة</a></div>
+      <div><h4>الموقع</h4><ul id="flinks"></ul></div>
+      <div><h4>تواصل</h4><ul id="fcontact"></ul></div>
+    </div>
+    <div class="fbar"><span id="copy"></span><span class="lic" id="flic"></span></div>
+  </div>
+</footer>
 
 <div class="pv" id="pv" role="dialog" aria-modal="true" aria-labelledby="pvT" hidden>
   <button class="pv-close" id="pvClose">إغلاق ✕</button>
@@ -756,8 +814,15 @@ const nameHTML = `<b>${esc(SITE.name)}</b><small>${esc(SITE.tagline)}</small>`;
 $("logo").innerHTML = SITE.logo ? `<img src="${esc(SITE.logo)}" alt="${esc(SITE.name)}" onerror="this.outerHTML=decodeURIComponent('${encodeURIComponent(nameHTML)}')">` : nameHTML;
 $("kicker").textContent = SITE.heroLine;
 $("bigname").textContent = SITE.name;
-$("copy").textContent = `© ${new Date().getFullYear()} ${SITE.name} ${SITE.tagline}` + (SITE.cr ? ` — سجل تجاري ${SITE.cr}` : "");
-$("fcity").textContent = `${SITE.city}، المملكة العربية السعودية`;
+$("copy").textContent = `© ${new Date().getFullYear()} ${SITE.name} ${SITE.tagline}` + (SITE.cr ? ` — سجل تجاري ${SITE.cr}` : "") + ` — ${SITE.city}`;
+if(SITE.freelance) $("flic").innerHTML = `وثيقة العمل الحر <b>${esc(SITE.freelance)}</b>`; else $("flic").remove();
+$("ftag").textContent = SITE.heroLine + "، نرافقك من الفكرة حتى المفتاح.";
+$("fcontact").innerHTML = [
+  `<li><a href="https://wa.me/${esc(SITE.whatsapp)}" target="_blank" rel="noopener" dir="ltr">${esc(SITE.whatsappDisplay)}</a></li>`,
+  SITE.email ? `<li><a href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a></li>` : "",
+  SITE.instagram ? `<li><a href="https://instagram.com/${esc(SITE.instagram)}" target="_blank" rel="noopener" dir="ltr">@${esc(SITE.instagram)}</a></li>` : "",
+  `<li>${esc(SITE.address)}</li>`, `<li>${esc(SITE.hours)}</li>`
+].join("");
 $("city").value = SITE.city;
 
 /* header behaviour */
@@ -774,6 +839,7 @@ const MENU = [["#top","الرئيسية"],["#about","عن "+SITE.name],["#servic
 if(SITE.collection?.enabled) MENU.push(["#collection","القطع"]);
 if(SITE.estimator?.enabled) MENU.push(["#estimate","قدّر مشروعك"]);
 MENU.push(["#contact","تواصل"]);
+$("flinks") && setTimeout(()=>{$("flinks").innerHTML = MENU.map(([hh,t])=>`<li><a href="${hh}">${esc(t)}</a></li>`).join("");});
 $("mlinks").innerHTML = MENU.map(([h,t],i)=>`<li><a href="${h}" style="transition-delay:${(.25+i*.06).toFixed(2)}s">${esc(t)}</a></li>`).join("");
 $("maside").innerHTML = `${esc(SITE.address)}<b dir="ltr" style="text-align:right">${esc(SITE.whatsappDisplay)}</b>${SITE.email?`<b>${esc(SITE.email)}</b>`:""}${SITE.instagram?`<b>@${esc(SITE.instagram)}</b>`:""}`;
 const menu = $("menu"), mbtn = $("mbtn");
@@ -826,10 +892,24 @@ setBars();
 /* statement + about */
 $("stmt").innerHTML = SITE.about.statement.split(/\s+/).map(w=>`<span>${esc(w)}</span> `).join("");
 const words = [...$("stmt").children];
-$("aboutTitle").textContent = `عن ${SITE.name}`;
-$("aboutText").textContent = SITE.about.text;
-$("aboutPhoto").innerHTML = img(SITE.about.photo, SITE.name);
-$("aboutFacts").innerHTML = SITE.about.facts.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("");
+const AB = SITE.about;
+$("aboutEyebrow").textContent = AB.eyebrow || `عن ${SITE.name}`;
+$("aboutTitle").textContent = AB.title || SITE.name;
+$("aboutParas").innerHTML = (AB.paragraphs || [AB.text]).filter(Boolean).map(t=>`<p>${esc(t)}</p>`).join("");
+$("aboutPhoto").innerHTML = img(AB.photo, SITE.name);
+if(AB.signature) $("aboutSig").textContent = AB.signature; else $("aboutSig").remove();
+if(AB.badge) $("aboutBadge").innerHTML = `<b>${esc(AB.badge[0])}</b><span>${esc(AB.badge[1])}</span>`; else $("aboutBadge").remove();
+$("aboutFacts").innerHTML = (AB.facts||[]).map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("");
+const ARCH_ICON = `<svg viewBox="0 0 26 30" aria-hidden="true"><path d="M2 29V13a11 11 0 0 1 22 0v16" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>`;
+if(AB.principles?.length) $("aboutPrin").innerHTML = AB.principles.map(([t,d])=>`<li>${ARCH_ICON}<h3>${esc(t)}</h3><p>${esc(d)}</p></li>`).join(""); else $("aboutPrin").remove();
+const abFrame = $("aboutPhoto");
+function scrollAbout(){
+  if(RM) return;
+  const r = abFrame.getBoundingClientRect();
+  if(r.bottom < 0 || r.top > innerHeight) return;
+  const p = (r.top + r.height/2 - innerHeight/2) / innerHeight;
+  abFrame.style.setProperty("--py", (p * -40).toFixed(1) + "px");
+}
 
 /* services */
 $("svcs").innerHTML = SITE.services.map(([t,d])=>`<li><h3>${esc(t)}</h3><p>${esc(d)}</p></li>`).join("");
@@ -1090,7 +1170,7 @@ else{
 
 /* scroll loop */
 let ticking = false;
-function onScroll(){ if(ticking) return; ticking = true; requestAnimationFrame(()=>{ onScrollHeader(); scrollWork(); scrollProc(); scrollStmt(); ticking = false; }); }
+function onScroll(){ if(ticking) return; ticking = true; requestAnimationFrame(()=>{ onScrollHeader(); scrollWork(); scrollProc(); scrollStmt(); scrollAbout(); ticking = false; }); }
 addEventListener("scroll", onScroll, {passive:true});
 addEventListener("resize", ()=>{ layoutWork(); onScroll(); });
 hMQ.addEventListener?.("change", ()=>{ layoutWork(); onScroll(); });
